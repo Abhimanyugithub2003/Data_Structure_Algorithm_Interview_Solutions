@@ -1,0 +1,19 @@
+1class Solution {
+2public:
+3    bool checkOnesSegment(string s) {
+4        int n=s.length();
+5        stack<char> st;
+6        int i=1;
+7        st.push('1');
+8        while(i<n){
+9            char ch=s[i];
+10        if(!st.empty()){
+11            if(st.top()=='0' && ch=='1')
+12            return false;
+13            st.push(ch);
+14        }
+15        i++;
+16        }
+17        return true;
+18    }
+19};
