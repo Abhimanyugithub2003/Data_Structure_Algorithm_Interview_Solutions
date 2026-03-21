@@ -20,14 +20,12 @@
 20            result=(result+solve(idx+1,src_cost,maxsofar))%MOD;
 21        }
 22    }
-23    if(maxsofar!=-1){
-24        t[idx][src_cost][maxsofar]=result%MOD;
-25    }
-26    return result%MOD;
-27}
-28    int numOfArrays(int n, int m, int k) {
-29        N=n,K=k,M=m;
-30        memset(t,-1,sizeof(t));
-31        return solve(0,0,0);
-32    }
-33};
+23    
+24    return t[idx][src_cost][maxsofar]=result%MOD;
+25}
+26    int numOfArrays(int n, int m, int k) {
+27        N=n,K=k,M=m;
+28        memset(t,-1,sizeof(t));
+29        return solve(0,0,0);
+30    }
+31};
