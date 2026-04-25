@@ -1,0 +1,1 @@
+ arr.push_back((x == 0 || y == side) ? side * 4UL - x - y : x + y);
