@@ -2,25 +2,19 @@
 2public:
 3    bool isValid(string s) {
 4        stack<char> st;
-5        int n=s.length();
-6        int i=0;
-7        while(i<n){
-8            char ch=s[i];
-9            if(s.empty() || ch=='(' || ch=='{' || ch=='['){
-10                st.push(ch);
-11            }else if(!st.empty() && ch==')' && st.top()=='('){
-12                st.pop();
-13            }else if(!st.empty() && ch=='}' && st.top()=='{'){
-14                st.pop();
-15            }else if(!st.empty() && ch==']' && st.top()=='['){
-16                st.pop();
-17            }else if(!st.empty() && ch!=st.top() && (ch==')' || ch=='}' || ch==']') ){
-18                return false;
-19            }else if(st.empty() && (ch==')' || ch=='}' || ch==']')){
-20                return false;
-21            }
-22            i++;
-23        }
-24        return (st.empty()) ? true : false;
-25    }
-26};
+5        for(int i=0;i<s.length();i++){
+6            char c=s[i];
+7            if(c=='(' || c=='{' || c=='['){
+8                st.push(c);
+9            }else{
+10                if(st.empty()) return false;
+11                char top=st.top();
+12                if((c==')' && top!='(') || (c=='}' && top!='{') || (c==']' && top!='[')){
+13                    return false;
+14                }
+15                st.pop();
+16            }
+17        }
+18        return st.empty();
+19    }
+20};
