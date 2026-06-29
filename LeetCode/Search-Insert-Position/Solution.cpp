@@ -1,23 +1,19 @@
 1class Solution {
 2public:
 3    int searchInsert(vector<int>& nums, int target) {
-4        int l=0,h=nums.size()-1;
-5        
-6        while(l<=h){
-7            int mid=l+(h-l)/2;
-8            if(l==h) {
-9                if(nums[l]>target) return l;
-10                else if(nums[l]<target) return l+1;
-11                return l;
-12            }
-13            if(nums[mid]>target){
-14                h=mid;
-15            }else if(nums[mid]<target){
-16                l=mid+1;
-17            }else{
-18                return mid;
-19            }
-20        }
-21        return -1;
-22    }
-23};
+4        int n=nums.size();
+5        int low=0;
+6        int high=n-1;
+7        int ans;
+8        while(low<=high){
+9            int mid=low+(high-low)/2;
+10            if(nums[mid]>=target){
+11                ans=mid;
+12                high=mid-1;
+13            }else{
+14                low=mid+1;
+15            }
+16        }
+17        return ans;
+18    }
+19};
