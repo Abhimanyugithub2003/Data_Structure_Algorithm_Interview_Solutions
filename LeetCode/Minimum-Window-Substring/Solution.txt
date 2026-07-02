@@ -1,0 +1,39 @@
+1class Solution {
+2public:
+3    string minWindow(string s, string t) {
+4        int n=s.length();
+5        int m=t.length();
+6        if(m > n) return "";
+7        unordered_map<char, int> mp;
+8        for(char &ch: t){
+9            mp[ch]++;
+10        } 
+11        int reqCnt=m;
+12        int i=0,j=0;
+13        int window=INT_MAX;
+14        int start_i=0;
+15        while(j<n){
+16            char ch = s[j];
+17            if(mp[ch]>0){
+18                reqCnt--;
+19            }
+20            mp[ch]--;
+21            while(reqCnt==0){
+22                int currWindow=j-i+1;
+23                if(window>currWindow){
+24                    window=currWindow;
+25                    start_i=i;
+26                }
+27                mp[s[i]]++;
+28                if(mp[s[i]]>0){
+29                    reqCnt++;
+30                }
+31                i++;
+32            }
+33            j++;
+34        }
+35        return window==INT_MAX ? "" : s.substr(start_i, window);
+36        
+37    }
+38
+39};
