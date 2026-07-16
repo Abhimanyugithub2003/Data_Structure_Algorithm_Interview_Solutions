@@ -3,18 +3,19 @@
 3    vector<int> dailyTemperatures(vector<int>& temperatures) {
 4        int n=temperatures.size();
 5        stack<int> st;
-6        vector<int> ans(n);
+6        vector<int> result(n);
 7        for(int i=n-1;i>=0;i--){
-8            if(st.empty()){
-9                ans[i]=0;
-10            }else{
-11                while(!st.empty() && temperatures[i]>=temperatures[st.top()]){
-12                    st.pop();
-13                }
-14                ans[i]=(st.empty())?0:st.top()-i;
-15            }
-16            st.push(i);
-17        }
-18        return ans;
-19    }
-20};
+8            while(!st.empty() && temperatures[i]>=temperatures[st.top()]){
+9                st.pop();
+10            }
+11            if(st.empty()){
+12                result[i]=0;
+13            }
+14            else{
+15                result[i]=st.top()-i;
+16            }
+17            st.push(i);
+18        }
+19        return result;
+20    }
+21};
