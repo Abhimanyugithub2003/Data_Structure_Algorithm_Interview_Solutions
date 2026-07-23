@@ -11,19 +11,13 @@
 11 */
 12class Solution {
 13public:
-14TreeNode* insertion(TreeNode* root,int val){
-15    if(!root){
-16        return new TreeNode(val);
-17    }
-18    if(root->val>val){
-19        root->left=insertion(root->left,val);
-20    }else if(root->val<val){
-21        root->right=insertion(root->right,val);
+14    TreeNode* insertIntoBST(TreeNode* root, int val) {
+15        if(!root) return new TreeNode(val);
+16        if(root->val >= val){
+17            root->left = insertIntoBST(root->left, val);
+18        }else{
+19            root->right = insertIntoBST(root->right, val);
+20        }
+21        return root;
 22    }
-23    return root;
-24}
-25    TreeNode* insertIntoBST(TreeNode* root, int val) {
-26        
-27        return insertion(root,val);;
-28    }
-29};
+23};
