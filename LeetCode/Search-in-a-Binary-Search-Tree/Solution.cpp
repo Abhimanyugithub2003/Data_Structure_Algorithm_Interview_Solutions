@@ -13,13 +13,14 @@
 13public:
 14    TreeNode* searchBST(TreeNode* root, int val) {
 15        if(!root) return nullptr;
-16        if(root->val == val){
+16        if(root->val==val){
 17            return root;
-18        }else if(root->val < val){
-19            return searchBST(root->right, val);
-20        }else{
-21            return searchBST(root->left, val);
-22        }
-23        return nullptr;
-24    }
-25};
+18        }
+19        else if(root->val>val){
+20            return searchBST(root->left,val);
+21        }
+22        else{
+23            return searchBST(root->right,val);
+24        }
+25    }
+26};
