@@ -11,15 +11,16 @@
 11 */
 12class Solution {
 13public:
-14    int height(TreeNode* root){
-15        if(!root) return 0;
-16        return 1 + max(height(root->left), height(root->right));
-17    }
-18    int diameterOfBinaryTree(TreeNode* root) {
-19        if(!root) return 0;
-20        int leftD = diameterOfBinaryTree(root->left);
-21        int rightD =diameterOfBinaryTree(root->right);
-22        int h = height(root->left) + height(root->right);
-23        return max(leftD, max(rightD, h));
-24    }
-25};
+14int ans=0;
+15    int height(TreeNode* root){
+16        if(!root) return 0;
+17        int leftH=height(root->left);
+18        int rightH=height(root->right);
+19        ans = max(ans, leftH + rightH);
+20        return 1+max(leftH , rightH);
+21    }
+22    int diameterOfBinaryTree(TreeNode* root) {
+23        height(root);
+24        return ans;
+25    }
+26};
