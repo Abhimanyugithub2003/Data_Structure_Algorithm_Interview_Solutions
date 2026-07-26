@@ -18,13 +18,14 @@
 18        return leftTree && rightTree && root->val==subRoot->val;
 19    }
 20    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-21        if(!subRoot) return true;
-22        if(!root) return false;
-23        if(root->val == subRoot->val && isSame(root, subRoot)){
-24            return true;
-25        }
-26        bool leftTree = isSubtree(root->left, subRoot);
-27        bool rightTree = isSubtree(root->right, subRoot);
-28        return leftTree || rightTree;
-29    }
-30};
+21        // if(!subRoot) return true;
+22        // if(!root) return false;
+23        if(!root || !subRoot) return root==subRoot;
+24        if(root->val == subRoot->val && isSame(root, subRoot)){
+25            return true;
+26        }
+27        bool leftTree = isSubtree(root->left, subRoot);
+28        bool rightTree = isSubtree(root->right, subRoot);
+29        return leftTree || rightTree;
+30    }
+31};
