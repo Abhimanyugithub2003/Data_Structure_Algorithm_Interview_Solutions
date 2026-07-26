@@ -13,17 +13,18 @@
 13public:
 14    bool isSame(TreeNode* root, TreeNode* subRoot){
 15        if(!root || !subRoot) return root==subRoot;
-16        return isSame(root->left, subRoot->left) && isSame(root->right, subRoot->right) && (root->val == subRoot->val);
-17    }
-18    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-19        if(!subRoot) return true;
-20        if(!root ) return false;
-21        if(root->val == subRoot->val && isSame(root, subRoot)){
-22            return true;
-23        }
-24        bool leftT =  isSubtree(root->left, subRoot);
-25        bool rightT =  isSubtree(root->right, subRoot);
-26        return leftT || rightT;
-27
-28    }
-29};
+16        bool leftTree = isSame(root->left, subRoot->left);
+17        bool rightTree = isSame(root->right, subRoot->right);
+18        return leftTree && rightTree && root->val==subRoot->val;
+19    }
+20    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+21        if(!subRoot) return true;
+22        if(!root) return false;
+23        if(root->val == subRoot->val && isSame(root, subRoot)){
+24            return true;
+25        }
+26        bool leftTree = isSubtree(root->left, subRoot);
+27        bool rightTree = isSubtree(root->right, subRoot);
+28        return leftTree || rightTree;
+29    }
+30};
