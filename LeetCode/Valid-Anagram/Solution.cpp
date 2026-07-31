@@ -1,17 +1,16 @@
 1class Solution {
 2public:
 3    bool isAnagram(string s, string t) {
-4        if(s.length()!=t.length()) return false;
-5        int freq[26]={0};
-6        for(char &it: s){
-7            freq[it-'a']++;
-8        }
-9        for(char&it : t){
-10            freq[it-'a']--;
-11        }
-12        for(int i=0;i<26;i++){
-13            if(freq[i]>0) return false;
-14        }
-15        return true;
-16    }
-17};
+4        unordered_map<char, int> mp;
+5        for(auto it : s){
+6            mp[it]++;
+7        }
+8        for(auto it: t){
+9            mp[it]--;
+10        }
+11        for(auto it : mp){
+12            if(it.second!=0) return false;
+13        }
+14        return true;
+15    }
+16};
