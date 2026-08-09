@@ -26,23 +26,24 @@
 26            root->right = deleteNode(root->right, key);
 27        }else{
 28            if(!root->left && !root->right){
-29                return nullptr;
-30            }
-31            else if(!root->left){
-32                TreeNode* temp = root->right;
-33                delete root;
-34                return temp;
-35            }
-36            else if(!root->right){
-37                TreeNode* temp = root->left;
-38                delete root;
-39                return temp;
-40            }else{
-41                TreeNode* IS = getIS(root->right);
-42                root->val = IS->val;
-43                root->right = deleteNode(root->right, IS->val);
-44            }
-45        }
-46        return root;
-47    }
-48};
+29                delete root;
+30                return nullptr;
+31            }
+32            else if(!root->left){
+33                TreeNode* temp = root->right;
+34                delete root;
+35                return temp;
+36            }
+37            else if(!root->right){
+38                TreeNode* temp = root->left;
+39                delete root;
+40                return temp;
+41            }else{
+42                TreeNode* IS = getIS(root->right);
+43                root->val = IS->val;
+44                root->right = deleteNode(root->right, IS->val);
+45            }
+46        }
+47        return root;
+48    }
+49};
