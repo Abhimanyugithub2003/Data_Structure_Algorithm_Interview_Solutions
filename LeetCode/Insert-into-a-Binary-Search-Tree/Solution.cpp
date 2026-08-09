@@ -13,10 +13,10 @@
 13public:
 14    TreeNode* insertIntoBST(TreeNode* root, int val) {
 15        if(!root) return new TreeNode(val);
-16        if(root->val >= val){
-17            root->left = insertIntoBST(root->left, val);
+16        if(root->val < val){
+17            root->right = insertIntoBST(root->right, val);
 18        }else{
-19            root->right = insertIntoBST(root->right, val);
+19            root->left = insertIntoBST(root->left, val);
 20        }
 21        return root;
 22    }
