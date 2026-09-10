@@ -1,1 +1,2 @@
-    df = world[(world['area'] >= 3000000) | (world['population'] >= 25000000)]
+1# Write your MySQL query statement below
+2SELECT name, population, area FROM World WHERE area >= 3000000 OR population >= 25000000;
